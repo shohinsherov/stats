@@ -7,22 +7,16 @@ import (
 )
 
 func main() {
-	payments := []types.Payment{
-		{ID: 1, Category: "auto", Amount: 20},
-		{ID: 1, Category: "food", Amount: 10},
-		{ID: 1, Category: "food", Amount: 10},
-		{ID: 1, Category: "auto", Amount: 20},
-		{ID: 1, Category: "auto", Amount: 20},
-	}
-	
-	expected := map[types.Category]types.Money {
+	first := map[types.Category]types.Money{
 		"auto": 10,
-		"food": 10,
+		"food": 20,
+	} 
+	second := map[types.Category]types.Money{
+		
+		"food": 20,
 	}
 
-	result := stats.CategoriesAvg(payments)
+	result := stats.PeriodsDynamic(first, second)
 
-	fmt.Println(expected)
-	fmt.Println("-------------------")
 	fmt.Println(result)
 }
